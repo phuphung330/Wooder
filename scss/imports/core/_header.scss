@@ -1,0 +1,225 @@
+header {
+    height: var(--height-header);
+    position: fixed;
+    width: 100%;
+    z-index: 50;
+
+    &.active {
+        background-color: $black-cl;
+        @include transition;
+    }
+
+
+    .container__fluid {
+        height: 100%;
+        position: relative;
+        @include mid ($flex:true);
+        justify-content: space-between;
+    }
+    
+
+    .header__logo {
+        img {
+            @include wh__img;
+        }
+
+
+    }
+
+    .header__menu {
+        @include mid ($flex:true);
+        @include mid ($flex:false);
+
+
+        li a {
+            display: inline-block;
+            font-family: 'pnb';
+            font-size: 15px;
+            letter-spacing: 0.375px;
+            line-height: 22.5px;
+            color: #fff;
+            padding: 25px 35px;
+            text-transform: uppercase;
+            @include transition;
+
+            &:hover,
+            &.active {
+                color: $brown-cl;
+            }
+        }
+
+
+    }
+
+    .lang {
+        position: relative;
+        @include mid($flex:true);
+        height: 100%;
+        color: $text-cl;
+        font-family: pnb;
+        font-size: 16px;
+        text-transform: uppercase;
+
+        .eng {
+            @include mid(true);
+            cursor: pointer;
+            color: $white-cl;
+            &.active{
+                color: $brown-cl;
+                transition: $time-transiton;
+            }
+
+            span {
+               
+                font-family: pnb;
+                font-size: 16px;
+                text-transform: uppercase;
+                padding: 5px;
+            }
+            .lang__ico{
+                display: flex;
+                margin-left: 5px;
+                img {
+                    width: 13px;
+                }
+            }
+        }
+
+
+        .lang__other {
+            position: absolute;
+            height: auto;
+            background-color: #ddd;
+            padding: 20px;
+            top: 60px;
+            right: 0;
+            text-align: right;
+            border: 1px solid #ddd;
+           
+            // display: none;
+            visibility: hidden;
+            cursor: pointer;
+            a {
+                color: $black-cl;
+                padding: 5px 0;
+                display: flex;
+                flex-direction: column;
+                &:hover{
+                    color:$brown-cl;
+                    
+                }
+            }
+            
+            &.active{
+                display: block;
+                visibility: visible;
+                
+            }
+        }
+        
+        
+
+
+
+    }
+
+    .btnmenu {
+        display: none;
+        cursor: pointer;
+        width: 40px;
+        height: 22px;
+        position: relative;
+        z-index: 100;
+
+        span {
+            width: 100%;
+            height: 2px;
+            display: block;
+            background-color: $brown-cl;
+            position: absolute;
+            top: 50%;
+            @include transform(translateY(-50%));
+            @include transition();
+        }
+
+        &::before,
+        &::after {
+            content: '';
+            width: 100%;
+            height: 2px;
+            display: block;
+            background-color: $brown-cl;
+            @include transition();
+            @include transform(rotate(0deg) translate(0px));
+
+        }
+
+        &::after {
+            position: absolute;
+            bottom: 0;
+        }
+
+        &.active {
+            &::before {
+                @include transform(rotate(45deg) translate(9px, 5px));
+                @include transition();
+            }
+
+            span {
+                opacity: 0;
+                @include transition ();
+            }
+
+            &::after {
+                @include transform(rotate(-45deg) translate(9px, -6px));
+                @include transition();
+            }
+        }
+
+
+    }
+
+
+
+    
+    @include sm {
+        .container__fluid {
+            .header__menu {
+                display: none;
+            }
+
+            .eng {
+                margin-right: 16px;
+            }
+
+            .btnmenu{
+                display: block;
+                cursor: pointer;
+            }
+
+        }
+    }
+    @include xs{
+        --height-header:60px;
+        background-color: $black-cl;
+        .lang{
+            color: $brown-cl;
+        }
+        .nav{
+        
+          
+            top: var(--height-header);
+          
+          
+            @include transition();
+           
+        }
+    }
+
+
+
+
+
+
+
+}

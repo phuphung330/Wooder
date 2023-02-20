@@ -1,0 +1,106 @@
+// viết icon , viết btn
+a{
+    text-decoration: none;
+    
+}
+
+
+// button learn more
+.btn{
+    display: flex;
+    align-items: center;
+  
+    &__text{
+     font-size: 14px;
+     font-family: pnb;
+     line-height: 58.33px;
+     letter-spacing: 2.8px;
+     color: $black-cl;
+     text-transform: uppercase;
+     position: relative;
+     margin-right: 10px;
+     white-space: nowrap;
+     
+     &::before{
+         position: absolute;
+         content: '';
+         height: 2px;
+         bottom: 12px;
+         left: 0;
+         background-color: $brown-cl;
+         width: 37px;
+         transition: 0.6s;
+
+
+     }
+     &:hover::before{
+         width: 100%;
+     }
+    }
+    &__ico{
+        display: flex;
+        img{
+          width: 100%;
+        }
+
+    }
+ }
+
+
+//  sideline
+// sideline left
+.--sideline-l::before {
+    left: -96px;
+    content: '';
+    position: absolute;
+    height: 2px;
+    background-color: $text-cl;
+    width: 76px;
+    top: 17px;
+}
+
+// sideline right
+.--sideline-r::before {
+    right: -96px;
+    content: '';
+    position: absolute;
+    height: 2px;
+    background-color: $text-cl;
+    width: 76px;
+    top: 17px;
+}
+
+// line
+.line-d::before{
+    position: absolute;
+    content: '';
+    background-color: $brown-cl;
+    
+}
+
+
+
+.effect-btn{
+    position: relative;
+    
+    &::before{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        color: $brown-cl;
+    }
+}
+
+
+
+@keyframes scroll {
+    0% {
+      
+      top: -68px;
+    }
+    100% {
+      top: -28px;
+    }
+  }

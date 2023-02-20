@@ -1,0 +1,44 @@
+.footer{
+    height: 60px;
+    background-color: #050505;
+    .container{
+        display: flex;
+        justify-content: space-between;
+        height: 100%;
+        align-items: center;
+        position: relative;
+        span{
+            font-family: pnr;
+            font-size: 12px;
+            
+            letter-spacing: 0.6px;
+            color: #b0b0b0;
+        }
+        .footer__logo{
+            width: 177px;
+            @include mid ($flex:false);
+            img{
+                width: 100%;
+                
+            }
+        }
+        .back-to-top{
+            font-family: pnr;
+            font-size: 12px;
+            letter-spacing: 0.6px;
+       
+            color: #b0b0b0;
+            text-transform: uppercase;
+        }
+
+    }
+}
+@include xs{
+    .footer{
+        height: 100px;
+        .container{
+            flex-direction: column;
+            justify-content: space-around;
+        }
+    }
+}

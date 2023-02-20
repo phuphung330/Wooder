@@ -1,0 +1,265 @@
+// khai báo function
+
+// mixin căn giữa
+@mixin flexcenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+// mixin hình trọng tâm
+@mixin imgcenter {
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    
+}
+
+// xài if else mixin 
+@mixin mid ($flex:false){
+    @if $flex {
+        display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+    @else {
+        position: absolute;
+        transform: translate(-50%,-50%);
+        top: 50%;
+        left: 50%;
+    }
+}
+
+@mixin overtext ($linenumber:3) {
+    display: -webkit-box;
+    -webkit-line-clamp: $linenumber;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+// ví dụ //
+//  @include overtext (2)
+//  @include overtext (3)
+// nếu không nhập tham số tự động nhập giá  trị 3 
+ 
+@mixin textdecor ($ff,$fz,$lh,$lp,$cl){
+    font-family: $ff;
+    font-size: $fz;
+    line-height: $lh;
+    letter-spacing: $lp;
+    color: $cl;
+    
+}
+
+// ví dụ : mixin có biến, mixin có thông số mặc định,mixin có tham số đầu vào
+
+
+// if trong mixin 
+// @mixin avatar($size, $circle: false) {
+//     width: $size;
+//     height: $size;
+  
+//     @if $circle {
+//       border-radius: $size / 2;
+//     }
+//   }
+  
+//   .square-av {
+//     @include avatar(100px, $circle: false);
+//   }
+//   .circle-av {
+//     @include avatar(100px, $circle: true);
+//   }
+  
+
+// width và height icon chia đôi
+@mixin wh__img {
+    width: calc(100% / 2);
+    height: calc(100% / 2);
+}
+
+// transition
+@mixin transition {
+    transition:$time-transiton ;
+}
+
+@mixin title {
+    font-family: pnb;
+    font-size: 40px;
+    padding-bottom: 11px;
+    letter-spacing: 2.8px;
+    color: #010101;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+}
+    
+@mixin text {
+    font-family: pnr;
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: 0.4px;
+    color: $text-cl;
+    
+}
+// transition
+@mixin transition {
+    transition:$time-transiton ;
+}
+
+@mixin transform($args) {
+	transform: $args;
+	-webkit-transform: $args;
+	-moz-transform: $args;
+	-ms-transform: $args;
+	-o-transform: $args;
+}
+
+@mixin transform-origin($args) {
+	transform-origin: $args;
+	-webkit-transform-origin: $args;
+	-moz-transform-origin: $args;
+	-ms-transform-origin: $args;
+	-o-transform-origin: $args;
+}   
+
+@mixin title {
+    font-family: pnb;
+    font-size: 40px;
+    padding-bottom: 11px;
+    letter-spacing: 2.8px;  
+    color: #010101;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+}
+    
+@mixin textt {
+    font-family: pnr;
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: 0.4px;
+    color: $text-cl;
+    
+}
+
+@mixin text($fz-text, $f-text, $lh-text, $text-cl, $text-transform) {
+	font-size: $fz-text;
+	font-family: $f-text;
+	line-height: $lh-text;
+	color: $text-cl;
+	text-transform: $text-transform;
+}
+
+@mixin customscroll($width: 6px, $bgTrack: #000, $bgThumb: $brown-cl) {
+	&::-webkit-scrollbar {
+		width: $width;
+	}
+	&::-webkit-scrollbar-track {
+		background: $bgTrack;
+	}
+	&::-webkit-scrollbar-thumb {
+		background: $bgThumb;
+	}
+}
+
+
+
+// large desktop
+@mixin lg {
+	@media screen and (max-width: $lg-max) {
+		@content;
+	}
+}
+// desktop
+@mixin md {
+	@media screen and (max-width: $md-max) {
+		@content;
+	}
+}
+// tablet
+@mixin sm {
+	@media screen and (max-width: $sm-max) {
+		@content;
+	}
+}
+// mobile
+@mixin xs {
+	@media screen and (max-width: $xs-max) {
+		@content;
+	}
+}
+// small mobile
+@mixin xxs {
+	@media (max-width: $xxs-max) {
+		@content;
+	}
+}
+// desktop landscape
+@mixin mdX {
+	@media screen and (max-width: $md-max) and (orientation: landscape) {
+		@content;
+	}
+}
+// tablet landscape
+@mixin smX {
+	@media screen and (max-width: $sm-max) and (orientation: landscape) {
+		@content;
+	}
+}
+// mobile landscape
+@mixin xsX {
+	@media screen and (max-width: $xs-max) and (orientation: landscape) {
+		@content;
+	}
+}
+
+@mixin maxW($args) {
+	@media (max-width: $args) {
+		@content;
+	}
+}
+@mixin minW($args) {
+	@media (min-width: $args) {
+		@content;
+	}
+}
+@mixin minH($args) {
+	@media (min-height: $args) {
+		@content;
+	}
+}
+@mixin maxH($args) {
+	@media (max-height: $args) {
+		@content;
+	}
+}
+
+
+@mixin keyframes($animation-name) {
+	@-webkit-keyframes #{$animation-name} {
+		@content;
+	}
+	@-moz-keyframes #{$animation-name} {
+		@content;
+	}
+	@-ms-keyframes #{$animation-name} {
+		@content;
+	}
+	@-o-keyframes #{$animation-name} {
+		@content;
+	}
+	@keyframes #{$animation-name} {
+		@content;
+	}
+}
+
+
+@mixin animation($str) {
+	animation: #{$str};
+	-webkit-animation: #{$str};
+	-moz-animation: #{$str};
+	-ms-animation: #{$str};
+	-o-animation: #{$str};
+}
